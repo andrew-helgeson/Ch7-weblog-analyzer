@@ -47,8 +47,9 @@ public class LogAnalyzer
     public int busiestHour()
     {
       int hourindex = 0;
+      int hour;
 
-      for(int hour = 0; hour < hourCounts.length; hour++)
+      for(hour = 0; hour < hourCounts.length; hour++)
       {
         if(hourCounts[hour] > hourCounts[hourindex])
         {
@@ -64,8 +65,9 @@ public class LogAnalyzer
     public int quietestHour()
     {
       int index = busiestHour();
+      int hour;
 
-      for(int hour = 0; hour < hourCounts.length; hour++)
+      for(hour = 0; hour < hourCounts.length; hour++)
       {
         if(hourCounts[index] > hourCounts[hour])
         {
@@ -73,6 +75,63 @@ public class LogAnalyzer
         }
       }
       return index;
+    }
+    
+    /**
+    * Return buisiest two hours
+    */
+    public int busiestTwoHour()
+    {
+      int index = 0;
+      int hour;
+
+      for(hour = 0; hour <hourCounts.length-1; hour++)
+      {
+
+        if((hourCounts[hour]+hourCounts[hour + 1]) > 
+        ((hourCounts[index]+hourCounts[index + 1])))
+        {
+          index = hour;
+        }
+
+      }
+      return hourCounts[index];
+    }
+    
+    /**
+    * Return quietest day
+    */
+    public int quietestDay()
+    {
+      int index = busiestDay();
+      int day;
+
+      for(day = 0; day < dayCounts.length; day++)
+      {
+        if(dayCounts[index] > dayCounts[day])
+        {
+          index = day;
+        }
+      }
+      return index;
+    }
+    
+    /**
+    * Return busiest day
+    */
+    public int busiestDay()
+    {
+      int dayindex = 0;
+      int day;
+
+      for(day = 0; day < dayCounts.length; day++)
+      {
+        if(dayCounts[day] > dayCounts[dayindex])
+        {
+          dayindex = day;
+        }
+      }
+      return dayindex;
     }
     
 
