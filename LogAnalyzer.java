@@ -41,6 +41,40 @@ public class LogAnalyzer
         return total;
     }
     
+    /**
+    * Return busiest hour
+    */
+    public int busiestHour()
+    {
+      int hourindex = 0;
+
+      for(int hour = 0; hour < hourCounts.length; hour++)
+      {
+        if(hourCounts[hour] > hourCounts[hourindex])
+        {
+          hourindex = hour;
+        }
+      }
+      return hourindex;
+    }
+    
+    /**
+    * Return quietest hour
+    */
+    public int quietestHour()
+    {
+      int index = busiestHour();
+
+      for(int hour = 0; hour < hourCounts.length; hour++)
+      {
+        if(hourCounts[index] > hourCounts[hour])
+        {
+          index = hour;
+        }
+      }
+      return index;
+    }
+    
 
     /**
      * Analyze the hourly access data from the log file.
